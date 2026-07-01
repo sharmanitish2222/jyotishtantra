@@ -59,7 +59,6 @@ function AnimatedCounter({
     const duration = 2000;
     const frameRate = 30;
     const totalFrames = Math.round(duration / (1000 / frameRate));
-    const increment = target / totalFrames;
     let currentFrame = 0;
 
     const timer = setInterval(() => {
