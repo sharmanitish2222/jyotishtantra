@@ -1,9 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {motion, AnimatePresence, type Variants, type BezierDefinition, } from "framer-motion";
 import { Menu, X, ShoppingBag, Sparkles, User } from 'lucide-react';
-import type { Variants, BezierDefinition } from "framer-motion";
 
 interface NavLink {
   label: string;
@@ -19,7 +18,7 @@ const navLinks: NavLink[] = [
   { label: 'About', href: '/about' },
 ];
 
-const ease: BezierDefinition = [0.22, 1, 0.36, 1];
+const ease = "easeInOut";
 
 const menuOverlayVariants: Variants = {
   hidden: {
@@ -30,8 +29,9 @@ const menuOverlayVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.4,
-      ease,
+  duration: 0.4,
+  ease,
+}
     },
   },
   exit: {
@@ -43,15 +43,27 @@ const menuOverlayVariants: Variants = {
     },
   },
 };
-const linkStaggerContainer = {
+const linkStaggerContainer: Variants = {
   visible: {
-    transition: { staggerChildren: 0.06, delayChildren: 0.15 },
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: 0.15,
+    },
   },
 };
 
-const linkItemVariants = {
-  hidden: { opacity: 0, x: -24 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.35 } },
+const linkItemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -24,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.35,
+    },
+  },
 };
 
 export default function Navbar() {
