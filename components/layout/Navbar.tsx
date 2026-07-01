@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ShoppingBag, Sparkles, User } from 'lucide-react';
+import type { Variants, BezierDefinition } from "framer-motion";
 
 interface NavLink {
   label: string;
@@ -18,20 +19,30 @@ const navLinks: NavLink[] = [
   { label: 'About', href: '/about' },
 ];
 
-const menuOverlayVariants = {
-  hidden: { opacity: 0, y: '-100%' },
+const ease: BezierDefinition = [0.22, 1, 0.36, 1];
+
+const menuOverlayVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: "-100%",
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
+    transition: {
+      duration: 0.4,
+      ease,
+    },
   },
   exit: {
     opacity: 0,
-    y: '-100%',
-    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as const },
+    y: "-100%",
+    transition: {
+      duration: 0.3,
+      ease,
+    },
   },
 };
-
 const linkStaggerContainer = {
   visible: {
     transition: { staggerChildren: 0.06, delayChildren: 0.15 },
