@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {motion, AnimatePresence, type Variants, type BezierDefinition, } from "framer-motion";
+import {motion, AnimatePresence, type Variants } from "framer-motion";
 import { Menu, X, ShoppingBag, Sparkles, User } from 'lucide-react';
 
 interface NavLink {
@@ -17,9 +17,6 @@ const navLinks: NavLink[] = [
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
 ];
-
-const ease = "easeInOut";
-
 const menuOverlayVariants: Variants = {
   hidden: {
     opacity: 0,
@@ -29,9 +26,8 @@ const menuOverlayVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-  duration: 0.4,
-  ease,
-}
+      duration: 0.4,
+      ease: "easeInOut",
     },
   },
   exit: {
@@ -39,7 +35,7 @@ const menuOverlayVariants: Variants = {
     y: "-100%",
     transition: {
       duration: 0.3,
-      ease,
+      ease: "easeInOut",
     },
   },
 };
